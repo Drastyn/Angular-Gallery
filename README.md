@@ -6,7 +6,7 @@ A simply practice Gallery maked with AngularJS and Rails 6 (API Rest).
 
 Use npm install to install dependency modules
 
-Create env.ts for add enviroment variables.
+Create env.ts for add environment variables.
 
 ## Development server
 
