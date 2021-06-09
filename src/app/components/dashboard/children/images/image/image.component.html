@@ -1,0 +1,18 @@
+<div>
+  <div class="has-text-centered my-6">
+    <h1 class="title is-2">{{ image.name }}</h1>
+    <h2 class="title is-4">Uploaded by @{{ image.user_name }}</h2>
+    <figure class="preview">
+      <img
+        src="{{ image.url }}"
+        alt="image"
+        class="privew-image"
+        width="768"
+        height="216"
+      />
+    </figure>
+  </div>
+  <a routerLink="/images" class="button is-info ml-6">
+    Back to the index of images
+  </a>
+</div>

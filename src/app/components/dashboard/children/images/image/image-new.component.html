@@ -1,0 +1,66 @@
+<div class="my-6 mx-6">
+  <form (ngSubmit)="newImage()">
+    <div class="columns">
+      <div class="column">
+        <h3 class="title is-2">New Image</h3>
+        <div class="field">
+          <div class="control">
+            <input
+              [(ngModel)]="name"
+              name="name"
+              type="text"
+              class="input"
+              placeholder="Name 4 to 30 characters"
+            />
+          </div>
+        </div>
+        <div class="file has-name is-right is-fullwidth">
+          <label class="file-label">
+            <input
+              name="file"
+              type="file"
+              class="file-input"
+              (change)="onImageChange($event)"
+            />
+            <ng-container *ngIf="file; then fileIs; else fileNot">
+            </ng-container>
+            <span class="file-cta">
+              <span class="file-label"> Select image </span>
+            </span>
+            <ng-template #fileIs>
+              <span class="file-name">
+                {{ file.name }}
+              </span>
+            </ng-template>
+            <ng-template #fileNot>
+              <span class="file-name">
+                No image selected (format jpg, jpeg or png)
+              </span>
+            </ng-template>
+          </label>
+        </div>
+        <div class="field my-5" *ngIf="urlPreview">
+          <div class="control">
+            <figure class="preview">
+              <img
+                class="preview-image"
+                [src]="urlPreview"
+                alt="preview"
+                width="400"
+                height="400"
+              />
+            </figure>
+          </div>
+        </div>
+        <div class="buttons my-5">
+          <button class="button is-success" style="margin-left: auto">
+            <span class="mt-1">Upload</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<a routerLink="/images" class="button is-info ml-6">
+  Back to the index of images
+</a>

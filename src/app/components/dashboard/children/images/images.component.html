@@ -1,0 +1,51 @@
+<div class="ml-5 my-3">
+  <a routerLink="/images/new" class="button is-success"> New Image </a>
+</div>
+<div class="columns is-multiline mx-3 my-3">
+  <div
+    class="column is-one-quarter-desktop is-half-tablet"
+    *ngFor="let image of images"
+  >
+    <div class="card pointer" (click)="openModal(image.url)">
+      <div class="card-image">
+        <figure class="image is-16by9">
+          <img src="{{ image.url }}" alt="image" />
+        </figure>
+      </div>
+      <div class="card-content is-overlay is-clipped">
+        <a
+          routerLink="/images/{{ image.token }}"
+          class="button is-small is-info"
+        >
+          <span>{{ image.name }}</span>
+        </a>
+      </div>
+    </div>
+    <div #modal class="modal">
+      <div #modalBackground class="modal-background"></div>
+      <div class="modal-content modal-center">
+        <p class="image is-3by3">
+          <img #modalImage alt="image" />
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="my-4 mx-5">
+  <nav class="pagination" role="navigation" arial-label="pagination">
+    <a
+      *ngIf="prevPage"
+      class="pagination-previous nav-button page-button"
+      (click)="goToPage(prevPage)"
+    >
+      <span> Previous page </span>
+    </a>
+    <a
+      *ngIf="nextPage"
+      class="pagination-previous nav-button page-button"
+      (click)="goToPage(nextPage)"
+    >
+      <span> Next Page </span>
+    </a>
+  </nav>
+</div>
