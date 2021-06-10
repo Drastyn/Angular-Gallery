@@ -3,6 +3,12 @@
     <div class="columns">
       <div class="column">
         <h3 class="title is-2">New Image</h3>
+        <div
+          *ngIf="checkErrors"
+          class="notification is-danger has-text-centered"
+        >
+          {{ checkErrors }}
+        </div>
         <div class="field">
           <div class="control">
             <input
