@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 
 @Injectable()
-export class ImageService {
+export class ImagesService {
   authToken: string = JSON.stringify(sessionStorage.getItem('token'));
   images: Image[] = [];
   image: any = Image;
@@ -29,12 +29,25 @@ export class ImageService {
 
   constructor(private router: Router) {}
 
-  getImages(page: number = 0) {
+  getImages(page: number = 1) {
     return this.petition
       .get(`images?page=${page}`, {
         headers: this.headers,
       })
-      .then((response) => (response.data))
+      .then((response) => response.data)
+      .catch((error) => console.log(error));
+  }
+
+  searchImages(search: string, page: number = 1) {
+    return this.petition({
+      method: 'post',
+      url: `images?page=${page}`,
+      headers: this.headers,
+      data: {
+        search: search,
+      },
+    })
+      .then((response) => response.data)
       .catch((error) => console.log(error));
   }
 

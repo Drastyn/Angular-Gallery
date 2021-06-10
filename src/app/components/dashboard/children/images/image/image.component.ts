@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Image } from 'src/app/models/image.model';
-import { ImageService } from 'src/app/services/images.service';
+import { ImagesService } from 'src/app/services/images.service';
 
 @Component({
   selector: 'app-image',
@@ -12,15 +12,15 @@ export class ImageComponent implements OnInit {
   token: string = '';
   constructor(
     private route: ActivatedRoute,
-    private imageService: ImageService
+    private imagesService: ImagesService
   ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.token = params.token;
-      this.imageService.getImage(this.token).then((image: any) => {
+      this.imagesService.getImage(this.token).then((image: any) => {
         this.image = image;
-        this.imageService.setImage(image);
+        this.imagesService.setImage(image);
       });
     });
   }

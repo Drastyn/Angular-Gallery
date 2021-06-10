@@ -16,7 +16,7 @@ import { CreditsComponent } from './components/dashboard/templates/credits.compo
 import { FooterComponent } from './components/dashboard/templates/footer.component';
 //SERVICES
 import { LoginService } from './services/login.service';
-import { ImageService } from './services/images.service';
+import { ImagesService } from './services/images.service';
 //GUARDIANS
 import { watchDog } from './services/login-guardian.services';
 
@@ -38,7 +38,7 @@ import { watchDog } from './services/login-guardian.services';
     FormsModule,
     FontAwesomeModule,
   ],
-  providers: [LoginService, ImageService, watchDog],
+  providers: [LoginService, ImagesService, watchDog],
   bootstrap: [AppComponent],
 })
 export class AppModule {

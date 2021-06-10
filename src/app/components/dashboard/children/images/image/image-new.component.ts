@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ImageService } from 'src/app/services/images.service';
+import { ImagesService } from 'src/app/services/images.service';
 
 @Component({
   selector: 'app-image',
@@ -10,7 +10,7 @@ export class ImageNewComponent implements OnInit {
   name: string = '';
   file: any;
 
-  constructor(private imageService: ImageService) {}
+  constructor(private imagesService: ImagesService) {}
 
   ngOnInit(): void {}
 
@@ -35,6 +35,6 @@ export class ImageNewComponent implements OnInit {
     let image = new FormData();
     image.append('archive[name]', this.name);
     image.append('archive[image]', this.file);
-    this.imageService.postImage(image);
+    this.imagesService.postImage(image);
   }
 }
