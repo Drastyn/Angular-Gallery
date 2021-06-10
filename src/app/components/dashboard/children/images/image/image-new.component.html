@@ -26,6 +26,9 @@
             </ng-container>
             <span class="file-cta">
               <span class="file-label"> Select image </span>
+              <span class="icon">
+                <fa-icon [icon]="['fas', 'file-image']"></fa-icon>
+              </span>
             </span>
             <ng-template #fileIs>
               <span class="file-name">
@@ -55,6 +58,9 @@
         <div class="buttons my-5">
           <button class="button is-success" style="margin-left: auto">
             <span class="mt-1">Upload</span>
+            <span class="icon">
+              <fa-icon [icon]="['fas', 'upload']"></fa-icon>
+            </span>
           </button>
         </div>
       </div>
@@ -62,5 +68,8 @@
   </form>
 </div>
 <a routerLink="/images" class="button is-info ml-6">
-  Back to the index of images
+  <span class="icon">
+    <fa-icon [icon]="['fas', 'arrow-left']"></fa-icon>
+  </span>
+  <span> Back to the index of images </span>
 </a>

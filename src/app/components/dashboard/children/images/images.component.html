@@ -1,5 +1,10 @@
 <div class="ml-5 my-3">
-  <a routerLink="/images/new" class="button is-success"> New Image </a>
+  <a routerLink="/images/new" class="button is-success">
+    <span>New Image</span>
+    <span class="icon">
+      <fa-icon [icon]="['fas', 'plus']"></fa-icon>
+    </span>
+  </a>
 </div>
 <div class="columns is-multiline mx-3 my-3">
   <div
@@ -18,6 +23,9 @@
           class="button is-small is-info"
         >
           <span>{{ image.name }}</span>
+          <span class="icon">
+            <fa-icon [icon]="['fas', 'link']"></fa-icon>
+          </span>
         </a>
       </div>
     </div>
@@ -38,6 +46,9 @@
       class="pagination-previous nav-button page-button"
       (click)="goToPage(prevPage)"
     >
+      <span class="icon mr-2">
+        <fa-icon [icon]="['fas', 'arrow-left']"></fa-icon>
+      </span>
       <span> Previous page </span>
     </a>
     <a
@@ -46,6 +57,9 @@
       (click)="goToPage(nextPage)"
     >
       <span> Next Page </span>
+      <span class="icon ml-2">
+        <fa-icon [icon]="['fas', 'arrow-right']" ></fa-icon>
+      </span>
     </a>
   </nav>
 </div>

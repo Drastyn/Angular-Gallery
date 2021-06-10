@@ -8,10 +8,17 @@
           style="margin-left: auto"
           (click)="logOut()"
         >
+          <span class="icon">
+            <fa-icon [icon]="['fas', 'sign-out-alt']"></fa-icon>
+          </span>
           <span> Exit </span>
         </button>
+      </div>
+      <div class="credits">
+        <app-credits></app-credits>
       </div>
     </div>
   </header>
   <router-outlet></router-outlet>
+  <app-footer></app-footer>
 </div>
