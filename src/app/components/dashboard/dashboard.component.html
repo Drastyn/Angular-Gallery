@@ -11,12 +11,24 @@
           <span class="icon">
             <fa-icon [icon]="['fas', 'sign-out-alt']"></fa-icon>
           </span>
-          <span> Exit </span>
+          <span>Exit</span>
         </button>
       </div>
       <div class="credits">
         <app-credits></app-credits>
       </div>
+      <a routerLink="/images" class="button is-info mt-3 mr-2">
+        <span>Images</span>
+        <span class="icon">
+          <fa-icon [icon]="['fas', 'images']"></fa-icon>
+        </span>
+      </a>
+      <a routerLink="/images/new" class="button is-info mt-3">
+        <span>New Image</span>
+        <span class="icon">
+          <fa-icon [icon]="['fas', 'plus']"></fa-icon>
+        </span>
+      </a>
     </div>
   </header>
   <router-outlet></router-outlet>
