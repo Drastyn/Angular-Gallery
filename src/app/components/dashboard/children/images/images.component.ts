@@ -26,19 +26,15 @@ export class ImagesComponent implements OnInit {
   }
 
   requestImages() {
-    this.imagesService.getImages().then((imagesFound: any) => {
-      this.setData(imagesFound);
-    });
+    this.imagesService.getImages().then(() => this.setData());
   }
 
   makeSearch() {
     if (this.searchInput) {
-      this.imagesService
-        .searchImages(this.searchInput)
-        .then((imagesFound: any) => {
-          this.setData(imagesFound);
-          this.isSearch = true;
-        });
+      this.imagesService.searchImages(this.searchInput).then(() => {
+        this.setData();
+        this.isSearch = true;
+      });
     }
   }
 
@@ -48,11 +44,10 @@ export class ImagesComponent implements OnInit {
     this.isSearch = false;
   }
 
-  setData(imagesFound: any) {
-    this.images = imagesFound.data;
-    this.nextPage = imagesFound.next_page_url;
-    this.prevPage = imagesFound.prev_page_url;
-    this.imagesService.setImages(this.images);
+  setData() {
+    this.images = this.imagesService.getThisImages();
+    this.nextPage = this.imagesService.getNextPage();
+    this.prevPage = this.imagesService.getPrevPage();
   }
 
   openModal(imageUrl: string) {
@@ -75,8 +70,8 @@ export class ImagesComponent implements OnInit {
   }
 
   goToPage(page: number) {
-    this.imagesService.getImages(page).then((imagesFound: any) => {
-      this.setData(imagesFound);
+    this.imagesService.getImages(page).then(() => {
+      this.setData();
     });
   }
 }

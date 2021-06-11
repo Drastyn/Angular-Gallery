@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
 export class ImagesService {
   authToken: string = JSON.stringify(sessionStorage.getItem('token'));
   images: Image[] = [];
-  image: any = Image;
+  nextPage: number = 0;
+  prevPage: number = 0;
   petition = axios.create({
     baseURL: environment.apiUrl,
   });
@@ -19,12 +20,16 @@ export class ImagesService {
     Authorization: this.authToken,
   };
 
-  setImages(images: Image[]) {
-    this.images = images;
+  getThisImages() {
+    return this.images;
   }
 
-  setImage(image: Image) {
-    this.image = image;
+  getNextPage() {
+    return this.nextPage;
+  }
+
+  getPrevPage() {
+    return this.prevPage;
   }
 
   constructor(private router: Router) {}
@@ -34,7 +39,11 @@ export class ImagesService {
       .get(`images?page=${page}`, {
         headers: this.headers,
       })
-      .then((response) => response.data)
+      .then((response) => {
+        this.images = response.data.images;
+        this.nextPage = response.data.next_page_url;
+        this.prevPage = response.data.prev_page_url;
+      })
       .catch((error) => console.log(error));
   }
 
@@ -47,7 +56,11 @@ export class ImagesService {
         search: search,
       },
     })
-      .then((response) => response.data)
+      .then((response) => {
+        this.images = response.data.images;
+        this.nextPage = response.data.next_page_url;
+        this.prevPage = response.data.prev_page_url;
+      })
       .catch((error) => console.log(error));
   }
 

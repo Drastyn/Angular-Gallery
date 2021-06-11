@@ -20,7 +20,6 @@ export class ImageComponent implements OnInit {
       this.token = params.token;
       this.imagesService.getImage(this.token).then((image: any) => {
         this.image = image;
-        this.imagesService.setImage(image);
       });
     });
   }
