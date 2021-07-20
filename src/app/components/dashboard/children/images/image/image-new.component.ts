@@ -11,11 +11,11 @@ export class ImageNewComponent implements OnInit {
   name: string = '';
   file: any;
 
-  constructor(private imagesService: ImagesService) {}
-
-  ngOnInit(): void {
+  constructor(private imagesService: ImagesService) {
     this.removeAlert();
   }
+
+  ngOnInit(): void {}
 
   onImageChange(event: any) {
     this.file =

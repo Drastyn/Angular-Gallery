@@ -18,12 +18,12 @@ export class ImagesComponent implements OnInit {
   nextPage: number = 0;
   prevPage: number = 0;
 
-  constructor(private imagesService: ImagesService, private router: Router) {}
-
-  ngOnInit(): void {
+  constructor(private imagesService: ImagesService, private router: Router) {
     this.requestImages();
     this.closeModal();
   }
+
+  ngOnInit(): void {}
 
   requestImages() {
     this.imagesService.getImages().then(() => this.setData());
@@ -52,8 +52,14 @@ export class ImagesComponent implements OnInit {
 
   openModal(imageUrl: string) {
     this.modalIsOpen = true;
-    this.modal.nativeElement.style.display = 'block';
+    this.enableModalStyles(imageUrl);
+  }
+
+  enableModalStyles(imageUrl: string) {
+    this.modalImage.nativeElement.classList.remove('is-hidden');
     this.modalImage.nativeElement.src = imageUrl;
+    this.modal.nativeElement.classList.add('modal');
+    this.modalBackground.nativeElement.classList.add('modal-background');
   }
 
   closeModal() {
@@ -63,10 +69,16 @@ export class ImagesComponent implements OnInit {
         event.target === this.modalBackground.nativeElement
       ) {
         this.modalIsOpen = false;
-        this.modalImage.nativeElement.src = '';
-        this.modal.nativeElement.style.display = 'none';
+        this.disableModalStyles();
       }
     });
+  }
+
+  disableModalStyles() {
+    this.modalImage.nativeElement.src = '';
+    this.modalImage.nativeElement.classList.add('is-hidden');
+    this.modal.nativeElement.classList.remove('modal');
+    this.modalBackground.nativeElement.classList.remove('modal-background');
   }
 
   goToPage(page: number) {

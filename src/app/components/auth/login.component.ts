@@ -13,6 +13,8 @@ export class LoginComponent implements OnInit {
   login(form: NgForm) {
     const username = form.value.username;
     const password = form.value.password;
-    this.loginService.login(username, password);
+    if (username && password) {
+      this.loginService.login(username, password);
+    }
   }
 }

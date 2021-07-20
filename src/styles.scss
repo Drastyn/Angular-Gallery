@@ -40,12 +40,9 @@
 }
 
 .modal {
+  display: flex;
+  justify-content: center;
   animation: animation_open 1s;
-
-  &-center {
-    margin: 70% auto;
-    overflow: hidden;
-  }
 }
 
 @keyframes animation_open {
@@ -69,12 +66,6 @@
 
 /* Tablet */
 @media screen and (min-width: 768px) {
-  .modal {
-    &-center {
-      margin: 25% auto;
-    }
-  }
-
   .my-bar {
     flex-wrap: nowrap;
 
@@ -86,24 +77,15 @@
 }
 
 @media screen and (min-width: 1024px) {
-  .modal {
-    &-center {
-      margin: 15% auto;
-    }
-  }
-
   .credits {
     display: block;
-
     &-link {
       transition: 0.8s;
     }
-
     &-link:hover {
       color: #3e73dc !important;
     }
   }
-
   .fix-footer {
     display: none;
   }
@@ -111,17 +93,6 @@
 
 /* Escritorio */
 @media screen and (min-width: 1400px) {
-  .modal {
-    &-center {
-      margin: 5% auto;
-    }
-
-    &-content {
-      width: 1280px;
-      height: 720px;
-    }
-  }
-
   .my-bar {
     a {
       width: 10%;

@@ -13,9 +13,13 @@ export class ImageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private imagesService: ImagesService
-  ) {}
+  ) {
+    this.getImage();
+  }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  getImage() {
     this.route.params.subscribe((params) => {
       this.token = params.token;
       this.imagesService.getImage(this.token).then((image: any) => {
